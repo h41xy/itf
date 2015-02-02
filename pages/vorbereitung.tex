@@ -1,0 +1,42 @@
+\section{Vorbereitung}
+Nach dem entpacken des Images stellten wir die in der Vorlesung erwähnte Abweichung der MD5 Summe fest.
+
+Die erwartete Summe war
+\begin{center}
+4afc088a94dd6c36e750b7462e737162  img.dd
+\end{center}
+Unser Ergebniss mit \texttt{md5sum} betrug
+\begin{center}
+06d111e7ad654c1b7d47676fb6661540  image.dd
+\end{center}
+Mit \texttt{fdisk -l image.dd} entnahmen wir folgende Partitionsinformationen:\\
+
+\noindent
+\texttt{
+Disk image.dd: 3221 MB, 3221225472 bytes\\
+255 heads, 63 sectors/track, 391 cylinders, total 6291456 sectors\\
+Units = sectors of 1 * 512 = 512 bytes\\
+Sector size (logical/physical): 512 bytes / 512 bytes\\
+I/O size (minimum/optimal): 512 bytes / 512 bytes\\
+Disk identifier: 0x0009d1b1\\
+\\Device Boot      Start         End      Blocks   Id  System\\
+image.dd1   *           0     3518171     1759086   83  Linux\\
+image.dd2         3518235     4305419      393592+  82  Linux swap / Solaris\\
+image.dd3         4305420     6281414      987997+   5  Extended\\
+image.dd5         4305483     6281414      987966   83  Linux\\}
+
+\lstset{basicstyle=\footnotesize}
+\lstinputlisting{snippets/fdisk.bash}
+
+
+Um die einzelnen Partitionen als Loopback Device mounten zu können muss ein Offset dem \texttt{losetup} Program übergeben werden. Dieser berechnet sich aus dem Startsektor sowie der Größe eines Sektors.\[startsector*sectorsize=offset\]
+Aus dieser Berechnung ergeben sich folgende \texttt{losetup}-Befehle:
+\begin{center}
+\texttt{losetup -v -r -o 32256 /dev/loop0 image.dd}\footnote{Da sich auf der ersten Partition der MBR befindet muss als Startsektor 63 gewaehlt werden.}\\
+\texttt{losetup -v -r -o 1801336320 /dev/loop1 image.dd}\\
+\texttt{losetup -v -r -o 2204407296 /dev/loop2 image.dd}\\
+\end{center}
+%Entweder ich machich aus dem hier oben noch ne Tabelle oder irgendwie linksbeundig
+
+Um die Loopback Devices nun einzubinden musste mit \texttt{fsstat} das Dateisystem ermittelt werden.
+
