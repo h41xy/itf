@@ -1,12 +1,21 @@
-\section{Vorbereitung}
-Nach dem entpacken des Images stellten wir die in der Vorlesung erwähnte Abweichung der MD5 Summe fest.
+\section{Durchführung}
+\subsection{Abarbeiten der Tests}
+Nachdem die Timeline erstellt war konzentrierten wir uns auf die Logins. Da der Geschädigte sagte, dass seine letzten Arbeiten am 28.01.2010 um 22:15 Uhr stattfanden bevor er gemerkt hat, dass mit dem Webserver etwas nicht stimmt, begannen wir dort und wurden gleich fündig.
+Hier ein Auszug aus der Datei \texttt{auth.log} :
+\lstset{basicstyle=\footnotesize, breaklines=true, breakatwhitespace=true}
+\lstinputlisting{snippets/auth.log}
 
-Die erwartete Summe war
-\begin{center}
-4afc088a94dd6c36e750b7462e737162  img.dd
-\end{center}
-Unser Ergebniss mit \texttt{md5sum} betrug
-\begin{center}
-06d111e7ad654c1b7d47676fb6661540  image.dd
-\end{center}
+Als wir anschließend die datei /etc/shadow durchsuchten fanden wir den Benutzer \texttt{evil, evil2, evil3}. Hier der Auszug:
+%\lstset{basicstyle=\footnotesize, breaklines=true, breakatwhitespace=true}
+%\lstinputlisting{snippets/shadow}
+% Michl hat verrafft wie er die erste partition gemounted hat deshalb muss ich mal warten
 
+Die Liste der geladenen Module in \texttt{/proc/modules} enhaelt keine auffälligen.
+
+\subsection{Auswerten der Tests}
+Als erstes beschäftigten man sich mit den ungewöhnlichen Systembenutzern \texttt{evil, evil2, evil3}. Eine sofortige Auffälligkeit der drei Benutzer \texttt{evil, evil2, evil3} in der \texttt{/etc/shadow} Datei ist, dass sie im Feld der letzten Passwortänderung, den selben Wert aufweisen wie die Systembenutzer. Dies suggeriert den selben Erstellungszeitpunkt wie diese ist aber insofern unglaubwürdig da in der erstellten Timeline der letzte \texttt{modification/change} Timestamp der \texttt{/etc/shadow} Datei am \texttt{Thu Jan 28 2010 22:16:33} ist. Was wiederum wiedersprüchlich ist mit der \texttt{auth.log} Log-Datei in der ein neuer Benutzer namens \texttt{evil} erst \texttt{Jan 28 22:50:04} erstellt wurde.
+Eine weitere Auffälligkeit findet sich im Auszug der Ausgabe des Befehls \texttt{ls -lahd /home/}:
+\begin{verbatim}
+drwxr-xr-x 2 1001 root 4,0K Jan 28 2010 evil
+drwxr-xr-x 2 1003 root 4,0K Jan 28 2010 evil3
+\end{verbatim}

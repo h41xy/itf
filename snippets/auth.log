@@ -1,0 +1,14 @@
+Jan 28 22:50:04 websrv useradd[2218]: new user: name=evil, UID=1001, GID=0, home=/home/evil, shell=/bin/bash
+Jan 28 22:50:24 websrv sshd[2224]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=10.0.0.66  user=evil
+Jan 28 22:50:27 websrv sshd[2224]: Failed password for evil from 10.0.0.66 port 60500 ssh2
+Jan 28 22:50:33 websrv sshd[2224]: Failed password for evil from 10.0.0.66 port 60500 ssh2
+Jan 28 22:56:35 websrv useradd[2229]: new user: name=evil2, UID=1002, GID=0, home=/home/evil, shell=/bin/bash
+Jan 28 23:00:10 websrv useradd[2239]: new user: name=evil3, UID=1003, GID=0, home=/home/evil3, shell=/bin/bash
+Jan 28 23:09:01 websrv CRON[2249]: pam_unix(cron:session): session opened for user root by (uid=0)
+Jan 28 23:09:01 websrv CRON[2249]: pam_unix(cron:session): session closed for user root
+Jan 28 23:17:01 websrv CRON[2291]: pam_unix(cron:session): session opened for user root by (uid=0)
+Jan 28 23:17:01 websrv CRON[2291]: pam_unix(cron:session): session closed for user root
+Jan 28 23:22:37 websrv passwd[2309]: pam_unix(passwd:chauthtok): password changed for evil
+Jan 28 23:23:02 websrv sshd[2311]: Accepted password for evil from 10.0.0.66 port 57009 ssh2
+Jan 28 23:23:02 websrv sshd[2311]: pam_unix(sshd:session): session opened for user evil by (uid=0)
+Jan 28 23:29:11 websrv sshd[2311]: pam_unix(sshd:session): session closed for user evil
