@@ -12,7 +12,7 @@
 Nach dem entpacken des Images wurden mit \texttt{fdisk~-l~image.dd} folgende Partitionsinformationen entnommen:
 \lstset{basicstyle=\footnotesize}
 \lstinputlisting{snippets/fdisk.bash} %Bin noch nicht sicher ob ich das einbinden soll oder statisch hier rein schrieben MSK: Ja, warum nicht?
-Da die Partitionstabelle des Images defekt ist (Startsektor = 0, normalerweise 63 bei der ersten Partition) und um die einzelnen Partitionen als Loopback Device mounten zu können muss dem \texttt{losetup} Program ein Offset übergeben werden. Dieser berechnet sich aus dem Startsektor sowie der Größe eines Sektors.\[startsector*sectorsize=offset\]
+Da die Partitionstabelle des Images defekt ist (Startsektor = 0, normalerweise 63 bei der ersten Partition) und um die einzelnen Partitionen als Loopback Device mounten zu können muss dem \texttt{losetup} Programm ein Offset übergeben werden. Dieser berechnet sich aus dem Startsektor sowie der Größe eines Sektors.\[startsector*sectorsize=offset\]
 Aus dieser Berechnung ergeben sich folgende \texttt{losetup}-Befehle:
 
 \begin{verbatim}
@@ -20,8 +20,8 @@ losetup -v -r -o      32256 /dev/loop0 image.dd
 losetup -v -r -o 1801336320 /dev/loop1 image.dd
 losetup -v -r -o 2204407296 /dev/loop2 image.dd
 \end{verbatim}
-\noindent Der Schalter \texttt{-r} verhindert, dass auf das Geraet geschrieben wird.\\
+\noindent Der Schalter \texttt{-r} verhindert, dass auf das Geraet schreibend zugegriffen wird.\\
 
 Um die Loopback Devices in das Dateisystem einzubinden muss mit \texttt{fsstat~-t~<Device>} das Dateisystem ermittelt werden. Angewendet auf die Geräte \texttt{/dev/loop0} und \texttt{/dev/loop2} gab das Program den Typ \texttt{ext3} an. Das Program gab weiterhin, angewendet auf das Gerät \texttt{/dev/loop1}, \texttt{Cannot determine file system type} zurück. Durch die vorherige Ausgabe von \texttt{fdisk} war aber bereits der Typ \texttt{swap} identifiziert.\\
 
-Schließlich konnten die beiden Partitionen mit dem \texttt{ext3} Dateisystem mit \texttt{mount~-t~ext3~<Device>} eingebunden werden.
+Schließlich konnten die beiden Partitionen mit dem \texttt{ext3} Dateisystem mit \texttt{mount~-o ~ro~-t~ext3~<Device>~<Mountpoint>} eingebunden werden.

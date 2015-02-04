@@ -1,5 +1,5 @@
 \section{Planung}
-Um den Vorfall zu bearbeiten wurden in einem Brainstorming Ideen gesammelt was alles überprüft werden sollte. Um den Untersuchungsablauf besser zu strukturieren, wurden diese anschließend kategorisiert und als Tests, welche durchgefuehrt werden sollen, umformulierten. Die Tests dienen als Untersuchungseinstiegspunkte da je nach Ergebniss ein dynamischer Fortgang zu erwarten ist.
+Um den Vorfall zu bearbeiten wurden in einem Brainstorming Ideen gesammelt was alles überprüft werden sollte. Um den Untersuchungsablauf besser zu strukturieren, wurden diese anschließend kategorisiert und als Tests, welche durchgeführt werden sollen, umformulierten. Die Tests dienen als Untersuchungseinstiegspunkte, da je nach Ergebniss ein dynamischer Fortgang zu erwarten ist.
 
 \begin{itemize}
 \item Timeline\\
@@ -7,11 +7,11 @@ Um einen Überblick der Aktionen auf dem Dateisystem zu erhalten soll eine Timel
 Des Weiteren können hier die letzten Änderungen an Dateien inklusive dem Verursacher entnommen werden.
 
 \item Logins\\
-Die Datei \texttt{/var/log/auth.log} soll auf Auffälligkeiten überprüft werden. Sie enthält alle login und logout Ergeignisse von normalen Benutzern sowie System Prozessen. 
-Es werden hieraus sich weiterführende Hinweise auf nicht authorisierte Zugriffe auf das System erhofft.
+Die Datei \texttt{/var/log/auth.log} soll auf Auffälligkeiten überprüft werden. Sie enthält alle login und logout Ergeignisse von normalen Benutzern sowie Systemprozessen. 
+Es werden hieraus weiterführende Hinweise auf nicht authorisierte Zugriffe auf das System erhofft.
 
 \item Benutzer\\
-In den Dateien \texttt{/etc/shadow} und \texttt{/etc/passwd} sind alle Benutzer des Systems hinterlegt. Sollten Benutzer hier hinterlegt sein, welche Auffälligkeiten aufweisen wie Name oder Erstellungsdatum, kann verfolgt werden was der Benutzer am System verändert hat.
+In den Dateien \texttt{/etc/shadow} und \texttt{/etc/passwd} sind alle Benutzer des Systems hinterlegt. Sollten Benutzer hier hinterlegt sein, welche Auffälligkeiten aufweisen wie z.b. ungewöhnliche Namen oder Erstellungsdaten, kann verfolgt werden was der Benutzer am System verändert hat.
 
 \item Module\\
 Die Datei \texttt{/proc/modules} listet alle geladenen Module des Systems. Sollten auffällige Module geladen sein kann mittels Reverse Engineering deren Zweck ermittelt werden.
