@@ -11,8 +11,8 @@
 %\end{center}
 Nach dem entpacken des Images wurden mit \texttt{fdisk~-l~image.dd} folgende Partitionsinformationen entnommen:
 \lstset{basicstyle=\footnotesize}
-\lstinputlisting{snippets/fdisk.bash} %Bin noch nicht sicher ob ich das einbinden soll oder statisch hier rein schrieben
-Um die einzelnen Partitionen als Loopback Device mounten zu können muss ein Offset dem \texttt{losetup} Program übergeben werden. Dieser berechnet sich aus dem Startsektor sowie der Größe eines Sektors.\[startsector*sectorsize=offset\]
+\lstinputlisting{snippets/fdisk.bash} %Bin noch nicht sicher ob ich das einbinden soll oder statisch hier rein schrieben MSK: Ja, warum nicht?
+Da die Partitionstabelle des Images defekt ist (Startsektor = 0, normalerweise 63 bei der ersten Partition) und um die einzelnen Partitionen als Loopback Device mounten zu können muss dem \texttt{losetup} Program ein Offset übergeben werden. Dieser berechnet sich aus dem Startsektor sowie der Größe eines Sektors.\[startsector*sectorsize=offset\]
 Aus dieser Berechnung ergeben sich folgende \texttt{losetup}-Befehle:
 
 \begin{verbatim}

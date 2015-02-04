@@ -3,18 +3,19 @@ Um den Vorfall zu bearbeiten wurden in einem Brainstorming Ideen gesammelt was a
 
 \begin{itemize}
 \item Timeline\\
-Um einen Überblick der Aktionnen auf dem Dateisystem zu erhalten soll eine Timeline erstellt werden.
+Um einen Überblick der Aktionen auf dem Dateisystem zu erhalten soll eine Timeline erstellt werden.
+Des Weiteren können hier die letzten Änderungen an Dateien inklusive dem Verursacher entnommen werden.
 
 \item Logins\\
-Die Datei \texttt{/var/log/auth.log} soll auf Auffaelligkeiten überprüft werden. Sie enthält alle login und logout Ergeignisse von normalen Benutzern sowie System Prozessen. 
+Die Datei \texttt{/var/log/auth.log} soll auf Auffälligkeiten überprüft werden. Sie enthält alle login und logout Ergeignisse von normalen Benutzern sowie System Prozessen. 
 Es werden hieraus sich weiterführende Hinweise auf nicht authorisierte Zugriffe auf das System erhofft.
 
 \item Benutzer\\
-In den Dateien \texttt{/etc/shadow} und \texttt{/etc/passwd} sind alle Benutzer des Systems hinterlegt. Sollten Benutzer hier hinterlegt sein welche Auffaelligkeiten aufweisen wie Name oder Erstellungsdatum kann verfolgt werden was der Benutzer am System verändert hat.
+In den Dateien \texttt{/etc/shadow} und \texttt{/etc/passwd} sind alle Benutzer des Systems hinterlegt. Sollten Benutzer hier hinterlegt sein, welche Auffälligkeiten aufweisen wie Name oder Erstellungsdatum, kann verfolgt werden was der Benutzer am System verändert hat.
 
 \item Module\\
-Die Datei \texttt{/proc/modules} listet alle geladenen Module des Systems. Sollten auffaellige Module geladen sein kann mittels Reverse Engineering deren Zweck ermittelt werden.
+Die Datei \texttt{/proc/modules} listet alle geladenen Module des Systems. Sollten auffällige Module geladen sein kann mittels Reverse Engineering deren Zweck ermittelt werden.
 
-\item Swap space\\
-In dieser Untersuchung wird der swap space nicht berücksichtigt.
+\item Swap Partition\\
+In dieser Untersuchung wird die Swap Partiton nicht berücksichtigt.
 \end{itemize}
