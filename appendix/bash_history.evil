@@ -1,0 +1,1 @@
+lsls -lmysudo whoamicd /etc/init.d/lstouch bdstart.shcdcp /etc/init.d/hostname.sh bdstart.shvim bdstart.sh cp /etc/init.d/networking .vim networking mysudo "cp ./networking /etc/init.d/"ls -l /etc/init.d/ls -l /etc/  

