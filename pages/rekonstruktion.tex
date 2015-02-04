@@ -1,0 +1,7 @@
+\section{Rekonstruktion des Vorfalls}
+Die ersten fehlgeschlagenen Zugriffsversuche unternahm der Angreifer um \hl{referenz} 22:14 Uhr von der IP-Adresse 10.0.0.6 über ssh.
+Anschließend wurden erfolgreiche Zugriffe auf den Webserver von der selben IP-Adresse im Access Log des Apache2 \hl{referenz} gefunden.
+Der Angreifer hat dann die \texttt{upload.html} und \texttt{upload.php} gefunden und diese genutzt um die Dateien \texttt{config.php, phpshell.php} sowie \texttt{style.css} hochzuladen. Der Ordner \texttt{upload} in welchem diese Dateien gespeichert wurden besitzt die Rechte \texttt{read, write} und \texttt{execute} für jeden Benutzer \hl{referenz}. 
+Dieser Umstand sowie der deaktivierte \texttt{safe\_mode} in \texttt{/etc/php5/apache2/php.ini} versetzten den Agreifer in die Lage eine PHP-Remote-Shell auszuführen.
+Diese Shell erhielt die Berrechtigungen des \texttt{www-data} Benutzers, also die des Webservers, welcher die PHP-Shell ausführt.
+Bei seiner Analyse des Systems fand der Angreifer in \texttt{/usr/local/bin/} die Binärdatei \texttt{mysudo} welche von Benutzer \texttt{itf} erstellt wurde und anschließend von \texttt{root} um 21:00 Uhr \hl{referenz auf bash history und timeline} das \texttt{setuid}-Bit gesetzt bekommen hat sowie den Eigentümerwechsel auf \texttt{root:root}.

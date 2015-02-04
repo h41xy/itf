@@ -1,10 +1,10 @@
 \section{Timeline}
-Nachdem zwei Partitionen als Dateisysteme erkannt wurden, wurde eine Timeline über diese erstellt mit folgenden Befehlen
+Nachdem zwei Partitionen als Dateisysteme erkannt wurden, wurde eine Timeline über diese erstellt mit folgenden Befehlen:
 \begin{verbatim}
-fls -o      63 -f ext3 -m / -r image.dd > body.txt
-fls -o 4305483 -f ext3 -m / -r image.dd > body.txt
+fls -o      63 -f ext3 -m / -r image.dd >  body.txt
+fls -o 4305483 -f ext3 -m / -r image.dd >> body.txt
 \end{verbatim}
-Anschließend wurde eine Timestamp-Sortierung mit dem Prgram \texttt{mactime-sleuthkit} vorgenommen für eine bessere Orientierung.
+Anschließend wurde für eine bessere Orientierung, eine Timestamp-Sortierung mit dem Program \texttt{mactime-sleuthkit} vorgenommen .
 \begin{verbatim}
 mactime-sleuthkit -b body.txt > tl.body.txt
 \end{verbatim}

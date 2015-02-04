@@ -1,17 +1,17 @@
 \section{Vorbereitung}
-Nach dem entpacken des Images stellten wir die in der Vorlesung erwähnte Abweichung der MD5 Summe fest.
+%Nach dem entpacken des Images stellten wir die in der Vorlesung erwähnte Abweichung der MD5 Summe fest.
 
-Die erwartete Summe war
-\begin{center}
-4afc088a94dd6c36e750b7462e737162  img.dd
-\end{center}
-Unser Ergebniss mit \texttt{md5sum} betrug
-\begin{center}
-06d111e7ad654c1b7d47676fb6661540  image.dd
-\end{center}
-Mit \texttt{fdisk -l image.dd} entnahmen wir folgende Partitionsinformationen:
+%Die erwartete Summe war
+%\begin{center}
+%4afc088a94dd6c36e750b7462e737162  img.dd
+%\end{center}
+%Unser Ergebniss mit \texttt{md5sum} betrug
+%\begin{center}
+%06d111e7ad654c1b7d47676fb6661540  image.dd
+%\end{center}
+Nach dem entpacken des Images wurden mit \texttt{fdisk~-l~image.dd} folgende Partitionsinformationen entnommen:
 \lstset{basicstyle=\footnotesize}
-\lstinputlisting{snippets/fdisk.bash}
+\lstinputlisting{snippets/fdisk.bash} %Bin noch nicht sicher ob ich das einbinden soll oder statisch hier rein schrieben
 Um die einzelnen Partitionen als Loopback Device mounten zu können muss ein Offset dem \texttt{losetup} Program übergeben werden. Dieser berechnet sich aus dem Startsektor sowie der Größe eines Sektors.\[startsector*sectorsize=offset\]
 Aus dieser Berechnung ergeben sich folgende \texttt{losetup}-Befehle:
 
@@ -20,8 +20,8 @@ losetup -v -r -o      32256 /dev/loop0 image.dd
 losetup -v -r -o 1801336320 /dev/loop1 image.dd
 losetup -v -r -o 2204407296 /dev/loop2 image.dd
 \end{verbatim}
-\noindent Der Schalter \texttt{-r} verhindert, dass auf das Geraet geschrieben wird.
+\noindent Der Schalter \texttt{-r} verhindert, dass auf das Geraet geschrieben wird.\\
 
-Um die Loopback Devices nun einzubinden musste mit \texttt{fsstat -t <Device>} das Dateisystem ermittelt werden. Angewendet auf die Geräte \texttt{/dev/loop0} und \texttt{/dev/loop2} erhielten wir \texttt{ext3}. Das Program gab, angewendet auf das Gerät \texttt{/dev/loop1}, \texttt{Cannot determine file system type} zurück. Durch die vorherige Ausgabe von \texttt{fdisk} war aber bereits der Typ \texttt{swap} gegeben.
+Um die Loopback Devices in das Dateisystem einzubinden muss mit \texttt{fsstat~-t~<Device>} das Dateisystem ermittelt werden. Angewendet auf die Geräte \texttt{/dev/loop0} und \texttt{/dev/loop2} gab das Program den Typ \texttt{ext3} an. Das Program gab weiterhin, angewendet auf das Gerät \texttt{/dev/loop1}, \texttt{Cannot determine file system type} zurück. Durch die vorherige Ausgabe von \texttt{fdisk} war aber bereits der Typ \texttt{swap} identifiziert.\\
 
-Schließlich konnten die beiden Partitionen mit dem \texttt{ext3} Dateisystem mit \texttt{mount -t ext3 <Device>} eingebunden werden.
+Schließlich konnten die beiden Partitionen mit dem \texttt{ext3} Dateisystem mit \texttt{mount~-t~ext3~<Device>} eingebunden werden.
