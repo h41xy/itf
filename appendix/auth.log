@@ -1,0 +1,103 @@
+Jan 28 15:21:49 websrv login[1983]: pam_unix(login:session): session opened for user itf by (uid=0)
+Jan 28 15:21:55 websrv su[2047]: pam_unix(su:auth): authentication failure; logname=itf uid=1000 euid=0 tty=tty1 ruser=itf rhost=  user=root
+Jan 28 15:21:57 websrv su[2047]: pam_authenticate: Authentication failure
+Jan 28 15:21:57 websrv su[2047]: FAILED su for root by itf
+Jan 28 15:21:57 websrv su[2047]: - tty1 itf:root
+Jan 28 15:22:04 websrv su[2048]: Successful su for root by itf
+Jan 28 15:22:04 websrv su[2048]: + tty1 itf:root
+Jan 28 15:22:04 websrv su[2048]: pam_unix(su:session): session opened for user root by itf(uid=1000)
+Jan 28 15:22:35 websrv useradd[2335]: new user: name=sshd, UID=103, GID=65534, home=/var/run/sshd, shell=/usr/sbin/nologin
+Jan 28 15:22:35 websrv usermod[2340]: change user `sshd' password
+Jan 28 15:22:35 websrv chage[2345]: changed password expiry for sshd
+Jan 28 15:22:35 websrv sshd[2376]: Server listening on :: port 22.
+Jan 28 15:22:35 websrv sshd[2376]: Server listening on 0.0.0.0 port 22.
+Jan 28 15:24:56 websrv su[2048]: pam_unix(su:session): session closed for user root
+Jan 28 16:26:41 websrv sshd[1674]: Server listening on :: port 22.
+Jan 28 16:26:41 websrv sshd[1674]: Server listening on 0.0.0.0 port 22.
+Jan 28 16:26:53 websrv login[2010]: pam_unix(login:session): session opened for user itf by LOGIN(uid=0)
+Jan 28 16:27:08 websrv su[2053]: Successful su for root by itf
+Jan 28 16:27:08 websrv su[2053]: + tty1 itf:root
+Jan 28 16:27:08 websrv su[2053]: pam_unix(su:session): session opened for user root by itf(uid=1000)
+Jan 28 16:27:44 websrv sshd[1674]: Received signal 15; terminating.
+Jan 28 16:27:44 websrv sshd[2082]: Server listening on :: port 22.
+Jan 28 16:27:44 websrv sshd[2082]: Server listening on 0.0.0.0 port 22.
+Jan 28 16:30:34 websrv sshd[2086]: Accepted password for itf from 10.0.0.2 port 45719 ssh2
+Jan 28 16:30:34 websrv sshd[2086]: pam_unix(sshd:session): session opened for user itf by (uid=0)
+Jan 28 16:30:40 websrv sshd[2086]: pam_unix(sshd:session): session closed for user itf
+Jan 28 16:31:31 websrv sshd[2106]: Accepted password for itf from 10.0.0.2 port 45720 ssh2
+Jan 28 16:31:31 websrv sshd[2106]: pam_unix(sshd:session): session opened for user itf by (uid=0)
+Jan 28 16:34:04 websrv su[2147]: Successful su for root by itf
+Jan 28 16:34:04 websrv su[2147]: + pts/0 itf:root
+Jan 28 16:34:04 websrv su[2147]: pam_unix(su:session): session opened for user root by itf(uid=1000)
+Jan 28 16:34:29 websrv su[2147]: pam_unix(su:session): session closed for user root
+Jan 28 16:34:31 websrv sshd[2106]: pam_unix(sshd:session): session closed for user itf
+Jan 28 16:35:31 websrv su[2053]: pam_unix(su:session): session closed for user root
+Jan 28 20:41:04 websrv sshd[1686]: Server listening on :: port 22.
+Jan 28 20:41:04 websrv sshd[1686]: Server listening on 0.0.0.0 port 22.
+Jan 28 20:44:51 websrv sshd[2047]: Accepted password for itf from 10.0.0.2 port 41543 ssh2
+Jan 28 20:44:51 websrv sshd[2047]: pam_unix(sshd:session): session opened for user itf by (uid=0)
+Jan 28 20:50:44 websrv su[2064]: Successful su for root by itf
+Jan 28 20:50:44 websrv su[2064]: + pts/0 itf:root
+Jan 28 20:50:44 websrv su[2064]: pam_unix(su:session): session opened for user root by itf(uid=1000)
+Jan 28 20:57:43 websrv sshd[2075]: Accepted password for itf from 10.0.0.2 port 50917 ssh2
+Jan 28 20:57:43 websrv sshd[2075]: pam_unix(sshd:session): session opened for user itf by (uid=0)
+Jan 28 20:57:43 websrv sshd[2075]: pam_unix(sshd:session): session closed for user itf
+Jan 28 20:59:27 websrv sshd[2087]: Accepted password for itf from 10.0.0.2 port 50918 ssh2
+Jan 28 20:59:27 websrv sshd[2087]: pam_unix(sshd:session): session opened for user itf by (uid=0)
+Jan 28 21:09:02 websrv CRON[2121]: pam_unix(cron:session): session opened for user root by (uid=0)
+Jan 28 21:09:02 websrv CRON[2121]: pam_unix(cron:session): session closed for user root
+Jan 28 21:09:14 websrv su[2064]: pam_unix(su:session): session closed for user root
+Jan 28 21:09:21 websrv sshd[2087]: pam_unix(sshd:session): session closed for user itf
+Jan 28 21:09:25 websrv sshd[2047]: pam_unix(sshd:session): session closed for user itf
+Jan 28 21:17:01 websrv CRON[2133]: pam_unix(cron:session): session opened for user root by (uid=0)
+Jan 28 21:17:01 websrv CRON[2133]: pam_unix(cron:session): session closed for user root
+Jan 28 21:39:01 websrv CRON[2137]: pam_unix(cron:session): session opened for user root by (uid=0)
+Jan 28 21:39:01 websrv CRON[2137]: pam_unix(cron:session): session closed for user root
+Jan 28 22:09:01 websrv CRON[2147]: pam_unix(cron:session): session opened for user root by (uid=0)
+Jan 28 22:09:01 websrv CRON[2147]: pam_unix(cron:session): session closed for user root
+Jan 28 22:13:47 websrv sshd[2157]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=10.0.0.66  user=root
+Jan 28 22:13:49 websrv sshd[2157]: Failed password for root from 10.0.0.66 port 51292 ssh2
+Jan 28 22:13:55 websrv sshd[2157]: Failed password for root from 10.0.0.66 port 51292 ssh2
+Jan 28 22:14:02 websrv sshd[2157]: Failed password for root from 10.0.0.66 port 51292 ssh2
+Jan 28 22:14:02 websrv sshd[2157]: PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=10.0.0.66  user=root
+Jan 28 22:14:08 websrv sshd[2160]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=10.0.0.66  user=root
+Jan 28 22:14:11 websrv sshd[2160]: Failed password for root from 10.0.0.66 port 51293 ssh2
+Jan 28 22:14:14 websrv sshd[2160]: Failed password for root from 10.0.0.66 port 51293 ssh2
+Jan 28 22:14:17 websrv sshd[2160]: Failed password for root from 10.0.0.66 port 51293 ssh2
+Jan 28 22:14:17 websrv sshd[2160]: PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=10.0.0.66  user=root
+Jan 28 22:14:22 websrv sshd[2162]: Invalid user admin from 10.0.0.66
+Jan 28 22:14:22 websrv sshd[2162]: Failed none for invalid user admin from 10.0.0.66 port 47703 ssh2
+Jan 28 22:14:24 websrv sshd[2162]: pam_unix(sshd:auth): check pass; user unknown
+Jan 28 22:14:24 websrv sshd[2162]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=10.0.0.66 
+Jan 28 22:14:26 websrv sshd[2162]: Failed password for invalid user admin from 10.0.0.66 port 47703 ssh2
+Jan 28 22:14:27 websrv sshd[2162]: pam_unix(sshd:auth): check pass; user unknown
+Jan 28 22:14:29 websrv sshd[2162]: Failed password for invalid user admin from 10.0.0.66 port 47703 ssh2
+Jan 28 22:14:31 websrv sshd[2162]: pam_unix(sshd:auth): check pass; user unknown
+Jan 28 22:14:33 websrv sshd[2162]: Failed password for invalid user admin from 10.0.0.66 port 47703 ssh2
+Jan 28 22:14:33 websrv sshd[2162]: PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=10.0.0.66 
+Jan 28 22:16:18 websrv login[2022]: pam_unix(login:auth): authentication failure; logname=LOGIN uid=0 euid=0 tty=tty1 ruser= rhost=  user=itf
+Jan 28 22:16:20 websrv login[2022]: FAILED LOGIN (1) on 'tty1' FOR `itf', Authentication failure
+Jan 28 22:16:33 websrv login[2022]: pam_unix(login:session): session opened for user itf by LOGIN(uid=0)
+Jan 28 22:16:45 websrv su[2178]: Successful su for root by itf
+Jan 28 22:16:45 websrv su[2178]: + tty1 itf:root
+Jan 28 22:16:45 websrv su[2178]: pam_unix(su:session): session opened for user root by itf(uid=1000)
+Jan 28 22:17:01 websrv CRON[2181]: pam_unix(cron:session): session opened for user root by (uid=0)
+Jan 28 22:17:01 websrv CRON[2181]: pam_unix(cron:session): session closed for user root
+Jan 28 22:17:13 websrv su[2178]: pam_unix(su:session): session closed for user root
+Jan 28 22:17:14 websrv login[2022]: pam_unix(login:session): session closed for user itf
+Jan 28 22:39:01 websrv CRON[2203]: pam_unix(cron:session): session opened for user root by (uid=0)
+Jan 28 22:39:01 websrv CRON[2203]: pam_unix(cron:session): session closed for user root
+Jan 28 22:50:04 websrv useradd[2218]: new user: name=evil, UID=1001, GID=0, home=/home/evil, shell=/bin/bash
+Jan 28 22:50:24 websrv sshd[2224]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=10.0.0.66  user=evil
+Jan 28 22:50:27 websrv sshd[2224]: Failed password for evil from 10.0.0.66 port 60500 ssh2
+Jan 28 22:50:33 websrv sshd[2224]: Failed password for evil from 10.0.0.66 port 60500 ssh2
+Jan 28 22:56:35 websrv useradd[2229]: new user: name=evil2, UID=1002, GID=0, home=/home/evil, shell=/bin/bash
+Jan 28 23:00:10 websrv useradd[2239]: new user: name=evil3, UID=1003, GID=0, home=/home/evil3, shell=/bin/bash
+Jan 28 23:09:01 websrv CRON[2249]: pam_unix(cron:session): session opened for user root by (uid=0)
+Jan 28 23:09:01 websrv CRON[2249]: pam_unix(cron:session): session closed for user root
+Jan 28 23:17:01 websrv CRON[2291]: pam_unix(cron:session): session opened for user root by (uid=0)
+Jan 28 23:17:01 websrv CRON[2291]: pam_unix(cron:session): session closed for user root
+Jan 28 23:22:37 websrv passwd[2309]: pam_unix(passwd:chauthtok): password changed for evil
+Jan 28 23:23:02 websrv sshd[2311]: Accepted password for evil from 10.0.0.66 port 57009 ssh2
+Jan 28 23:23:02 websrv sshd[2311]: pam_unix(sshd:session): session opened for user evil by (uid=0)
+Jan 28 23:29:11 websrv sshd[2311]: pam_unix(sshd:session): session closed for user evil
