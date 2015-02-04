@@ -5,3 +5,5 @@ Der Angreifer hat dann die \texttt{upload.html} und \texttt{upload.php} gefunden
 Dieser Umstand sowie der deaktivierte \texttt{safe\_mode} in \texttt{/etc/php5/apache2/php.ini} versetzten den Agreifer in die Lage eine PHP-Remote-Shell auszuführen.
 Diese Shell erhielt die Berrechtigungen des \texttt{www-data} Benutzers, also die des Webservers, welcher die PHP-Shell ausführt.
 Bei seiner Analyse des Systems fand der Angreifer in \texttt{/usr/local/bin/} die Binärdatei \texttt{mysudo} welche von Benutzer \texttt{itf} erstellt wurde und anschließend von \texttt{root} um 21:00 Uhr \hl{referenz auf bash history und timeline} das \texttt{setuid}-Bit gesetzt bekommen hat sowie den Eigentümerwechsel auf \texttt{root:root}.
+Daraufhin wurde das \texttt{mysudo} Program nach, welches \\
+
