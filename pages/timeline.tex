@@ -4,7 +4,6 @@ Nachdem zwei Partitionen als Dateisysteme erkannt wurden, wurde eine Timeline ü
 fls -o      63 -f ext3 -m / -r image.dd >  body.txt
 fls -o 4305483 -f ext3 -m / -r image.dd >> body.txt
 \end{verbatim}
-Anschließend wurde für eine bessere Orientierung, eine Timestamp-Sortierung mit dem Program \texttt{mactime-sleuthkit} vorgenommen .
-\begin{verbatim}
-mactime-sleuthkit -b body.txt > tl.body.txt
-\end{verbatim}
+Anschließend wurde für eine bessere Orientierung, eine Timestamp-Sortierung und Umwandlung in das CSV-Format mit dem Programm \texttt{mactime-sleuthkit} vorgenommen. Diese wurde zwecks einfacheren Filterung in LibreofficeCalc importiert.
+\lstset{basicstyle=\footnotesize, breaklines=true, breakatwhitespace=true}
+\lstinputlisting{snippets/mactime}

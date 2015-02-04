@@ -1,0 +1,1 @@
+mactime-sleuthkit -d -p /mnt/erste/etc/passwd -g /mnt/erste/etc/group -b body.txt 2010-01-27 > tl.20100127.csv
